@@ -1,0 +1,78 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.imglogo{
+    height: 100%;
+    width: 35vh;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-image:linear-gradient( rgba(1, 3, 10, 0.719), rgba(158, 31, 101, 0.85) ), url("./assest/background.webp") ;
+
+}
+.titulo{
+    background-color: rgba(131, 135, 140, 0.468);
+}
+h1{
+    text-align: center;
+    font-size: 1rem;
+}
+.checksearch{
+    display: flex;
+    padding: 3px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin: 3vh;
+    
+}
+.secc-cards{
+    justify-content: center;
+    display: flex;
+    padding: 3px;
+    margin: 0.5rem;
+    flex-wrap: wrap;
+}
+.secc-cards img{
+    height: 28vh;
+}
+
+.detalles img{
+    height: 95%;
+    width: 100%;
+    margin-top: 2vh;
+}
+.formulario{
+    display: flex;
+    justify-content: center;
+}
+.table{
+    margin: 6vh !important;
+}
+.formulario1{
+    border: 2px solid black;
+    border-radius: 10px;
+}
+footer{
+    display: flex;
+    background-color: rgba(249, 247, 247, 0.953);
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+}
+footer a{
+    width: 0.1vh;
+}
+.cohort{
+    margin-top: 2vh;
+    align-items: center;
+}

@@ -44,106 +44,62 @@
       <div class="titulo">
         <h1><strong>STATS</strong> </h1> 
       </div>
-      <div class="checksearch d-flex flex-wrap">
-        <div class="check m-2" style="width: 53rem;">
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-            <label class="form-check-label text-light" for="inlineCheckbox1">Food Fair</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-            <label class="form-check-label text-light" for="inlineCheckbox2">Museum</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-            <label class="form-check-label text-light" for="inlineCheckbox3">Costum Party</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option2">
-            <label class="form-check-label text-light" for="inlineCheckbox2">Music Concert</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="option3">
-            <label class="form-check-label text-light" for="inlineCheckbox3">Race</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="option3">
-            <label class="form-check-label text-light" for="inlineCheckbox3">Book Exchange</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox7" value="option3">
-            <label class="form-check-label text-light" for="inlineCheckbox3">Cinema</label>
-          </div>
-        </div>
-        <div class="seccsearch">
-          <form class="d-flex" role="search" style="width: 22rem;">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button  class="btn btn-outline-dark btn btn-light" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-              </svg>
-            </button>
-          </form> 
-        </div>
-      </div>
-      <div class="tabla-stats d-flex justify-content-center " >
-        <table class="table table-bordered  border-light text-light" style="width: 60rem;">
-              <thead>
-                  <tr>
-                    <th colspan="3" class="text-bg-dark p-3">EVENTS STATISTICS</th>
-                  </tr>
-              </thead>
-              <tbody>
+      <div class="container c-table-style  d-flex justify-content-center flex-column ">
+        <table class="table  table-bordered text-light text-center bg-table" style ="width: 92%;">
+            <colgroup>
+                <col span="2" class="columns">
+            </colgroup>
+            <thead>
                 <tr>
-                  <td colspan="1" class="bg-opacity-50  bg-dark ">Events with the highest percentage of attendance</td>
-                  <td colspan="1" class="bg-opacity-50  bg-dark ">Events with the lowest percentage of attendance</td>
-                  <td colspan="1" class="bg-opacity-50  bg-dark ">Events with larger capacity</td>
+                    <th scope="col" colspan="3"><strong>EVENTS STATISTICS</strong></th>
                 </tr>
-                  <tr>
-                      <td>-</td>
-                      <td></td>
-                      <td></td>
-                  </tr>
-                  <tr>
-                    <td colspan="3" class="text-bg-dark p-3"><strong>UPCOMING EVENTS STATISTICS BY CATEGORY</strong></td>
-                  </tr>
-                  <tr>
-                    <td colspan="1" class="bg-opacity-50  bg-dark ">Categories</td>
-                    <td colspan="1" class="bg-opacity-50  bg-dark  ">Revenues</td>
-                    <td colspan="1" class="bg-opacity-50  bg-dark ">Percentage of attendance</td>
-                  </tr> 
-                  <tr>
-                    <td>-</td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>-</td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td colspan="3" class="text-bg-dark p-3"><strong>PAST EVENTS STATISTICS BY CATEGORY</strong> </td>
-                  </tr>   
-                  <tr>
-                    <td colspan="1" class="bg-opacity-50  bg-dark ">Categories</td>
-                    <td colspan="1" class="bg-opacity-50  bg-dark  ">Revenues</td>
-                    <td colspan="1" class="bg-opacity-50  bg-dark ">Percentage of attendance</td>
-                  </tr> 
-                  <tr>
-                    <td>-</td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>-</td>
-                    <td></td>
-                    <td></td>
-                  </tr>        
-              </tbody>
-          </table>
-      </div>
+            </thead>
+            <tbody id="eventsTable">
+                <tr class="subth">
+                    <td><strong>with the highest percentage of attendance</strong> </td>
+                    <td><strong>Event with the lowest percentage of attendance</strong></td>
+                    <td><strong>Event with larger capacity</strong></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-bordered text-light text-center bg-table" style ="width: 92%;">
+            <colgroup>
+                <col span="2" class="columns">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th scope="col" colspan="3"><strong>UPCOMING EVENTS STATISTICS BY CATEGORY</strong></th>
+                </tr>
+            </thead>
+            <tbody id="upComingEventsTable">
+                <tr class="subth" >
+                  <td><strong>Categories</strong></td>
+                  <td><strong>Revenues</strong></td>
+                  <td><strong>Porcentage of attendance </strong></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-bordered mb-3 text-light text-center bg-table " style ="width: 92%;">
+            <colgroup>
+                <col span="2" class="columns">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th scope="col" colspan="3"><strong>EVENTS STATISTICS BY CATEGORY</strong> </th>
+                </tr>
+            </thead>
+            <tbody id="pastEventsTable">
+                <tr class="subth">
+                    <td><strong>Categories</strong></td>
+                    <td><strong>Revenues</strong></td>
+                    <td><strong>Porcentage of attendance </strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="./stats.js"></script>
     <footer>
       <div class="iconos">
         <a class="navbar-brand m-1 ms-2" href="https://www.instagram.com/" >

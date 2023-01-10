@@ -1,11 +1,16 @@
 let urlParameter = location.search
 let parameter = new URLSearchParams(urlParameter)
-let id = parameter.get("id")
-let dataEvents = data.events
-
 let seccDetails = document.getElementById("secc-details")
-let detailCard = data.events.find(event => event._id == id )
-console.log(detailCard)
+let id = parameter.get("id")
+let apiInfo;
+fetch('https://mindhub-xj03.onrender.com/api/amazing')
+  .then(res=> res.json() )
+  .then(res => {
+    apiInfo = res
+    let detailCard = res.events.find(event => event._id == id )
+    crearTemplate( detailCard)
+  }).catch(err=>console.log(err))
+
 
 function crearTemplate( detailCard){
   seccDetails.innerHTML=""
@@ -31,4 +36,4 @@ function crearTemplate( detailCard){
 </div>`
 seccDetails.appendChild(div)
 }
-crearTemplate( detailCard)
+

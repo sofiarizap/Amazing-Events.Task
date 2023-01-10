@@ -1,23 +1,29 @@
 const cardSpace = document.getElementById("secc-cards")
 const searchSpace = document.getElementById("searchSpace")
 const checkSpace = document.getElementById("checkCategory")
-let upcomingEvents1 = filtrarUpcoming(data)
 
+let apiInfo;
+fetch('https://mindhub-xj03.onrender.com/api/amazing')
+  .then(res=> res.json() )
+  .then(res => {
+    apiInfo = res.events.filter(item => item.date > res.currentDate)
+    let checkbox= document.querySelectorAll('input[type="checkbox"]')
+    const searchCategories =apiInfo.map( res =>res.category)
+    const sinRepetir = Array.from(new Set( searchCategories))
+    checkSpace.innerHTML=crearCheckbox(sinRepetir)
+    searchSpace.addEventListener('input', filtroCruzado )
+    checkSpace.addEventListener( 'change',filtroCruzado)
+    filtroCruzado()
+  }).catch(err=>console.log(err))
 
 // Barra de Busqueda
-
-searchSpace.addEventListener('input',filtroCruzado )
-
-function searchName(inputSearch, listNames){
-  let filteredEvents =listNames.filter(events =>events.name.toLowerCase().includes(inputSearch.value.toLowerCase()))
+function searchName(inputSearch,dataEvents){
+  let filteredEvents =dataEvents.filter(events =>events.name.toLowerCase().includes(inputSearch.value.toLowerCase()))
+  
   return(filteredEvents)
 }
 
-
 // checkbox de categorias 
-
-const searchCategories = data.events.map( elemnt => elemnt.category)
-const sinRepetir = Array.from(new Set(searchCategories))
 
 function crearCheckbox(categories){
   let template = ""
@@ -32,24 +38,20 @@ function crearCheckbox(categories){
   })
   return(template)
 }
-checkCategory.innerHTML=crearCheckbox(sinRepetir)
 
-checkSpace.addEventListener( 'change',filtroCruzado)
-
-let checkbox= document.querySelectorAll(".form-check-input")
-
-function  searchCategory (changeCheckBox, listEvents){
+function  searchCategory ( listEvents){
+  let checkbox= document.querySelectorAll('input[type="checkbox"]')
   let listCategories= []
-  for ( let change of changeCheckBox){
+  for ( let change of checkbox){
     if(change.checked){
       listCategories.push(change.value)
     }
   }
   let filteredCategories= listEvents.filter(event => listCategories.includes(event.category))
-  if (filteredCategories.length===0){
+  if (listCategories.length===0){
     return listEvents
   }else{
-    return filteredCategories
+    return(filteredCategories); 
   }
 }
 
@@ -58,12 +60,13 @@ function renderizar (templete, location ){
 }
 // función de cruce 
 function filtroCruzado(){
-  let searchFilter= searchName(searchSpace,upcomingEvents1)
-  let checkFilter = searchCategory(checkbox,searchFilter)
-  console.log(checkFilter)
-  if(checkFilter=== 0||checkFilter === undefined ||checkFilter ==null ){
-    let message = document.createElement("p2")
-    message.innerHTML= `<p2 class="alert">Event not found, adjust search filter</p2> `
+  let searchFilter= searchName(searchSpace,apiInfo)
+  let checkFilter = searchCategory(searchFilter)
+  if(checkFilter.length=== 0){
+    cardSpace.innerHTML= ""
+    let message = document.createElement("p")
+    message.className= "alert"
+    message.textContent= "Event not found, adjust search filter"
     cardSpace.appendChild(message) 
   }else{
     renderizar(crearTemplate(checkFilter),cardSpace)
@@ -72,15 +75,7 @@ function filtroCruzado(){
 filtroCruzado()
 
 //crear el template de las cards
-function filtrarUpcoming (data){
-    let upcoming = []
-    for (let elements of data.events){
-        if(elements.date > data.currentDate){
-            upcoming.push(elements)
-          }
-        }
-      return upcoming  
-}
+
 function crearTemplate(upcomingEvents1){
     let upcomingEvents = ""
     for (let elements of upcomingEvents1){
